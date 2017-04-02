@@ -73,7 +73,9 @@ Há diversas opções, desde dar boot com a imagem ISO e fazer a instalação, a
 Siga os tutoriais abaixo para seu ambiente, ignorando a parte de cloud-init pois vamos fazer isso no próximo passo (é interessante ler pois explica o que é).
 
 **VirtualBox:** https://coreos.com/os/docs/latest/booting-on-virtualbox.html
+
 **VMware:** https://coreos.com/os/docs/latest/booting-on-vmware.html
+
 **ISO** https://coreos.com/os/docs/latest/installing-to-disk.html
 
 Recomendações: Recomendo que a máquina virtual deva estar em NAT, (vmware importa com padrão bridge), pois é preciso acesso a internet para instalar o kontena, e uma rede entre as máquinas.
@@ -99,9 +101,13 @@ E também pode usar os scripts que criei, que foram baseados no guia oficial. Em
 Recomendo que siga os dois, assim você vai entender melhor como meu script funciona.
 
 1. Edite o arquivo **master/config-drive/openstack/latest/user_data**. 
+   
    a) Adicione sua chave SSH pública. [Como gerar?](https://kb.iu.edu/d/aews)
+
    b) Opcional: Gere sua chave KONTENA_VAULT_KEY e KONTENA_VAULT_IV e edite o arquivo *user_data*:  `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1`
+
    c) Opcional: Gere um certificado SSL para master e edite o arquivo *user_data*
+
 2. Gere o iso do cloud init: `./generate.sh master`. Um arquivo **master-configdrive.iso** será gerado na pasta do script
 3. Monte o iso como cdrom da máquina virtual no boot.
 4. Ligue a máquina
@@ -115,7 +121,10 @@ kontena grid create test
 ```
 
 Nota: SSL_IGNORE_ERRORS=true força o CLI a conectar no master com um certificado auto assinado
-Nota 2: OK, se está usando o certificado e as chaves que eu crei para testes, mas saiba que eu (e toda internet) pode hackear seu cluster, não se esqueça de criar o seu em produção ;-)
+
+Nota 2: OK, se está usando o certificado e as chaves que eu crei para testes, mas saiba que eu (e toda internet) pode hackear seu cluster, 
+não se esqueça de criar o seu em produção ;-)
+
 Nota 3: Não consegue autenticar pois o _code_ está errado? Instruções para resetar no final desse arquivo
 
 ## Passo 4 - Cloud init para nós
@@ -134,17 +143,22 @@ Para gerar um arquivo novo:
 kontena grid cloud-config <grid name> > user_data
 mv user_data nodes/config-drive/openstack/latest/
 ```
+
 Edite o arquivo, adicione suas chaves ssh e coloque a configuração: `hostname: node`. Verifique se a configuração **KONTENA_PEER_INTERFACE** está correta
 
 Para editar o aquivo existente:
 
 1. Edite o arquivo **nodes/config-drive/openstack/latest/user_data**.
+   
    a) Adicione sua chave SSH pública.
+   
    b) Edite KONTENA_URI e KONTENA_TOKEN
+
 2. Gere o iso do cloud init: `./generate-nodes.sh 2`. Dois arquivos iso serão gerados. (você também pode usar `./generate.sh nodes node1` para gerar um nó)
 3. Monte o iso como cdrom da máquina virtual no boot.
 
 Nota: KONTENA_URI é o ip ou DNS do master. Use _https_ se deixou o certifico ou se criou um certificado ao configurar o cloud-init do master, caso contrário _http_
+
 Nota 2: `./generate-nodes.sh 1000` vai gerar 1000 arquivos iso um para cada nó. Legal não acha? O problema é montar esses iso e criar as 1000 máquinas virtuais rsrsrs
 
 ## Passo 5 - Teste o cluster
@@ -202,8 +216,11 @@ docker exec -t kontena-server-api rake kontena:reset_admin
 # Referências
 
 http://www.kontena.io/docs/
+
 https://coreos.com/os/docs/latest/booting-on-virtualbox.html
+
 https://coreos.com/os/docs/latest/booting-on-vmware.html
+
 https://coreos.com/os/docs/latest/cloud-config.html
 
 

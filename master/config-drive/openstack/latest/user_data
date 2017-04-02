@@ -1,0 +1,169 @@
+#cloud-config
+write_files:
+  - path: /etc/kontena-server.env
+    permissions: 0600
+    owner: root
+    content: |
+      KONTENA_VERSION=latest
+      KONTENA_VAULT_KEY=x5RelJ1Y85oymadQfIjvIAIysrSUoysffczkTBtyQQwPaX0b8sIb4isGJBb2ASXe
+      KONTENA_VAULT_IV=c0rGHzbLjrHVMrPOTTNzEgJugOXCTvB2jwB0wGvwu4WaMqTApmrMjHKHqWFUhsF1
+      KONTENA_INITIAL_ADMIN_CODE=admin
+      SSL_CERT="/etc/kontena-server.pem"
+
+  - path: /etc/kontena-server.pem
+    permissions: 0600
+    owner: root
+    content: |
+      Bag Attributes
+      localKeyID: 10 C5 42 D2 F6 96 F3 28 12 D8 21 0A 06 C3 A5 A7 EB 97 19 BF 
+      subject=/C=BR/ST=Minas Gerais/L=Belo Horizonte/O=ACME/CN=kontena.local
+      issuer=/C=BR/ST=Minas Gerais/L=Belo Horizonte/O=ACME/CN=kontena.local
+      -----BEGIN CERTIFICATE-----
+      MIIDmzCCAoOgAwIBAgIJAMLOJZ6rjIwAMA0GCSqGSIb3DQEBCwUAMGQxCzAJBgNV
+      BAYTAkJSMRUwEwYDVQQIDAxNaW5hcyBHZXJhaXMxFzAVBgNVBAcMDkJlbG8gSG9y
+      aXpvbnRlMQ0wCwYDVQQKDARBQ01FMRYwFAYDVQQDDA1rb250ZW5hLmxvY2FsMB4X
+      DTE3MDMxMjE1NTAxOFoXDTE4MDMxMjE1NTAxOFowZDELMAkGA1UEBhMCQlIxFTAT
+      BgNVBAgMDE1pbmFzIEdlcmFpczEXMBUGA1UEBwwOQmVsbyBIb3Jpem9udGUxDTAL
+      BgNVBAoMBEFDTUUxFjAUBgNVBAMMDWtvbnRlbmEubG9jYWwwggEiMA0GCSqGSIb3
+      DQEBAQUAA4IBDwAwggEKAoIBAQCk7ITLAiYPpVSz52/b1qeJ865wXjZNAXzUQ5WM
+      vbaVHdjxwVyASVB253JZf0mp/EVb3MEIRkDc+34hOc4yHpHmOmLZ5aqLuS5H4eFR
+      iYno3/Mxv5ROIOJef0LtZYP0vhEoGcDrG8XhFKVsxF6xly3bVt4IwQ+uUVJi/EDa
+      cSUZRql5bkNEAaFLdgH9dDCdssAOZA2ijxGeg73MYYKaYzBQ1+Ye3E62xD+mY645
+      Pud6GRcmtYSyDVwinwuiZa0NixgY/J2TM252G4OooQhQ6g9eGCdMco+tmVkvR34f
+      He5LDsdPZx8TmoZqY3SSBln6XOJM6G/I4n8KSHsMxbIF9zeBAgMBAAGjUDBOMB0G
+      A1UdDgQWBBQyJtikVB/Qp0Q2bpqYGU/QVQNB2DAfBgNVHSMEGDAWgBQyJtikVB/Q
+      p0Q2bpqYGU/QVQNB2DAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQCB
+      NJXm+DluiVVJs3lrjwPyL4P1Q/webnqEEKwtXasoIMaRv8O//kmIvc8BXABczCeW
+      s6Mw0wMJ/TiZnTgxQG3S1O6ipxQ5oOfV94URfD7SmDjeSk7s3iakxH9OX86PxBH+
+      YcJVKsIPJQHVfeKfvyud91PmRHQ/43Hg4pUD1RVHBXM8kwFUU07/bER+Fj9ZpDez
+      ZtswrNb2ULQ98186dbknPmh2tUEip8G5pAbGzT5mgHAr/YgAt/ttWHnZoQpjjLtm
+      Mafo04+GfNyPdeSXbCxH7U495dz9W6+uPTNKVxT58x1ueAZ+f/surxbjUMLParUa
+      tBzZVcKQkDWnYu2Iy1Mz
+      -----END CERTIFICATE-----
+      Bag Attributes
+          localKeyID: 10 C5 42 D2 F6 96 F3 28 12 D8 21 0A 06 C3 A5 A7 EB 97 19 BF 
+      Key Attributes: <No Attributes>
+      -----BEGIN PRIVATE KEY-----
+      MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCk7ITLAiYPpVSz
+      52/b1qeJ865wXjZNAXzUQ5WMvbaVHdjxwVyASVB253JZf0mp/EVb3MEIRkDc+34h
+      Oc4yHpHmOmLZ5aqLuS5H4eFRiYno3/Mxv5ROIOJef0LtZYP0vhEoGcDrG8XhFKVs
+      xF6xly3bVt4IwQ+uUVJi/EDacSUZRql5bkNEAaFLdgH9dDCdssAOZA2ijxGeg73M
+      YYKaYzBQ1+Ye3E62xD+mY645Pud6GRcmtYSyDVwinwuiZa0NixgY/J2TM252G4Oo
+      oQhQ6g9eGCdMco+tmVkvR34fHe5LDsdPZx8TmoZqY3SSBln6XOJM6G/I4n8KSHsM
+      xbIF9zeBAgMBAAECggEAAhf+l5UvZoNyz9XgVaoj9lxhmouXpOKf8xHolCDUcJAw
+      cOFDi11i6B+IFBrJlJ7fQotK6A/8QtHuh/1z4K8CqymSl7GSuLNhIwh7E83rMkml
+      jLwh5dwFA64Z62megzzmetvY1yNDH9hjQT489YQ10NMJfpL04AGoShlpuVw2XFvE
+      EuT8pNQMF5pSK+NVR96ZMUViTqoP+vMh4RWy9BeDffw7VWvMqtMnuYAV2g/1tr+0
+      v5lY8Vk9vahcFTM4VgNntMNsFypqEOIYL24UDqzaQtq60o77IoIxUDPOZfdO6Xbr
+      iUID1CZrfXrCE2skggYP/lvUFSumvSAfxnbr2jHAAQKBgQDTYDGWnq2ieiJCIea4
+      kixKMWL8qXgEpuv77CPKHKZ7CS7ChhSVbRauNLsqTi+f+wJLYsAYKpISSl4Waqo3
+      P9y8tJQlO6f0xTYDdBJo0BqE6JiKAr2lHZ7F6OFBXchDiaXpa1G9qHfn/tpTOn1P
+      YpZBQm9TwTh4JEyIe49wyX/p8QKBgQDHvdVujIAFFEblVO+SIvJw+vsKzeY8p92n
+      9oZTBFzWDKsx24IoevahPgZAy7un5M5V01BVi7uRkXQdWmiGp5tdzUqrPO2O1IoY
+      WgO0McLx7wos5DqMkM0Xdg4NcM8+NcTd1hFamTZr/U4wrBVfKDc9OBD5QtKrlRpw
+      ijp3C/kWkQKBgQDDz33AgRhqxmeMCem5G7gpttxzIO7MqHE9u8Bfz/CtU5FcpGbX
+      EeqL0M993lYiBp5WhZFcEbulc/z7GS675c4vhb0jTMNHbZWe11zieb3HV81PNEDI
+      f8sAnb5mFmGZpx7qP//GCRWi9aT8qtdAvhxhMhD9bqZILaA0Yvo7Sn7TkQKBgB71
+      j5VY9abT48E8Dv4JqKZWYH7mNx+DrVmRXnSToogS4p4RtfTsSjnn0TRN38JANrMa
+      08LOq73+W48JKlZkuDIr1b0A7plK3DS2DwjpBZxWPq+CmIidEQzn4Xm32Id98guo
+      WHxAby0B0BK/OXjMVPOKMydPcjPiInz7D+DP3EXhAoGBALwW0+jjLz6vcjVVTkC+
+      XRdtHCYh8BwRnHkiX6lKJhplqb8yNa1uvplmk3sW6NDXjj4ZFOxrD1QfVqmt3uGZ
+      XzAZEgbt2va37MboPkk3FtUzrVQ7pVNLH4yQl0K8JQP5PLB1wj9aSIJUu/okd00+
+      CrZi49xWss3olf19KDVwPy6j
+      -----END PRIVATE KEY-----
+
+  - path: /opt/bin/kontena-haproxy.sh
+    permissions: 0755
+    owner: root
+    content: |
+      #!/bin/sh
+      if [ -n "$SSL_CERT" ]; then
+        SSL_CERT=$(awk 1 ORS='\\n' $SSL_CERT)
+      else
+        SSL_CERT="**None**"
+      fi
+      /usr/bin/docker run --name=kontena-server-haproxy \
+        --link kontena-server-api:kontena-server-api \
+        -e SSL_CERT="$SSL_CERT" -e BACKEND_PORT=9292 \
+        -p 80:80 -p 443:443 kontena/haproxy:latest
+hostname: master
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKQiUJNZQXmOzrrIjJUQEXepVay5Ht97UThN+1Xhla+JGLvlR9474T2sWViAkQ1lnUI0tCYzo+6fKPBjIs+Pj4LpuzPLwcAcHb0kIBVnJyNZfXZwmgaZGyp+v8PfSTZqfhO+OioRnrh+wh/aIHT4pNlOYCRB2akqwY7iLHgSn2tUG0f+of3zvz6cWcpv0DSdy4t9DL2RY3fGVu0bzLjIoBR3pYkXTmQbOrBL7J+qj2b7CHQw16lc9ymYNbI9DfQegCwhYm0ACPpCQ8Ctea4g369qHwU8LdeFWyUIBUQvCv0jb6wWUlfKIXLgP/udUgmGe+201JgytDoh+CTPxbLTcH
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPCeaj6g4gNtEczHhNS13D1KsFxaT5I0pKPJBNcaFd5/dMjYmLSYY/eas0Tqzcrk+USKqGg4Rc8BEFAVAz8bBpHyntEXLdwYRTjtmM0RwOyZJ3M2Aix4JZLhc3jko21tLdkBWkkzqCpX00ReZjhxWSLEnXASBfslkcizITcBkEBj8HXh33CJvP7YRsWVyhE6VrOzYVa1o52ogRFZb0Q7yD/3ba5u5Jx8P3mgGKFt6cZGYB7WPowe5HJw5vXad80awmkh5QN1JMGw3U2RcA7zk8buMOQ5egb4rWshe2KvQPSBywwRKhWPwL5u9afuoZwmrfpLxVkFYzKkmWpZjuz3C5
+coreos:
+  units:
+    - name: kontena-server-mongo.service
+      command: start
+      enable: true
+      content: |
+        [Unit]
+        Description=kontena-server-mongo
+        After=network-online.target
+        After=docker.service
+        Description=Kontena Server MongoDB
+        Documentation=http://www.mongodb.org/
+        Requires=network-online.target
+        Requires=docker.service
+
+        [Service]
+        Restart=always
+        RestartSec=5
+        ExecStartPre=/usr/bin/docker pull mongo:3.0
+        ExecStartPre=-/usr/bin/docker create --name=kontena-server-mongo-data mongo:3.0
+        ExecStartPre=-/usr/bin/docker stop kontena-server-mongo
+        ExecStartPre=-/usr/bin/docker rm kontena-server-mongo
+        ExecStart=/usr/bin/docker run --name=kontena-server-mongo \
+            --volumes-from=kontena-server-mongo-data \
+            mongo:3.0 mongod --smallfiles
+        ExecStop=/usr/bin/docker stop kontena-server-mongo
+
+    - name: kontena-server-api.service
+      command: start
+      enable: true
+      content: |
+        [Unit]
+        Description=kontena-server-api
+        After=network-online.target
+        After=docker.service
+        Description=Kontena Agent
+        Documentation=http://www.kontena.io/
+        Requires=network-online.target
+        Requires=docker.service
+
+        [Service]
+        Restart=always
+        RestartSec=5
+        EnvironmentFile=/etc/kontena-server.env
+        ExecStartPre=-/usr/bin/docker stop kontena-server-api
+        ExecStartPre=-/usr/bin/docker rm kontena-server-api
+        ExecStartPre=/usr/bin/docker pull kontena/server:${KONTENA_VERSION}
+        ExecStart=/usr/bin/docker run --name kontena-server-api \
+            --link kontena-server-mongo:mongodb \
+            -e MONGODB_URI=mongodb://mongodb:27017/kontena_server \
+            -e VAULT_KEY=${KONTENA_VAULT_KEY} -e VAULT_IV=${KONTENA_VAULT_IV} \
+            -e INITIAL_ADMIN_CODE=${KONTENA_INITIAL_ADMIN_CODE} \
+            kontena/server:${KONTENA_VERSION}
+        ExecStop=/usr/bin/docker stop kontena-server-api
+
+    - name: kontena-server-haproxy.service
+      command: start
+      enable: true
+      content: |
+        [Unit]
+        Description=kontena-server-haproxy
+        After=network-online.target
+        After=docker.service
+        Description=Kontena Server HAProxy
+        Documentation=http://www.kontena.io/
+        Requires=network-online.target
+        Requires=docker.service
+
+        [Service]
+        Restart=always
+        RestartSec=5
+        EnvironmentFile=/etc/kontena-server.env
+        ExecStartPre=-/usr/bin/docker stop kontena-server-haproxy
+        ExecStartPre=-/usr/bin/docker rm kontena-server-haproxy
+        ExecStartPre=/usr/bin/docker pull kontena/haproxy:latest
+        ExecStart=/opt/bin/kontena-haproxy.sh
+        ExecStop=/usr/bin/docker stop kontena-server-haproxy

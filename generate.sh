@@ -1,5 +1,15 @@
 #!/bin/bash
 
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='macosx'
+fi
+
 # Default Name for ISO_FILE
 
 if [ -z "${1}" ]; then
@@ -22,4 +32,9 @@ then
   rm $ISO_FILE
 fi
 
-mkisofs -R -V config-2 -o $ISO_FILE $1/config-drive
+if [[ $platform == 'macosx' ]]; then
+  hdiutil makehybrid -iso -joliet -default-volume-name config-2 -o $ISO_FILE $1/config-drive
+elif [[ "$platform" == 'Linux' ]]; then
+  mkisofs -R -V config-2 -o $ISO_FILE $1/config-drive
+fi
+

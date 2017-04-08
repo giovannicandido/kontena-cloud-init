@@ -4,8 +4,8 @@ write_files:
     permissions: 0600
     owner: root
     content: |
-      KONTENA_URI="https://192.168.183.129"
-      KONTENA_TOKEN="TOGsompPBNh8qz+JqeAD5q1bYCrSFngKblA/9U1a1UlweYNJCgmlVG5f+TPuS1lv5KpC77Pvx8JQV/Vo6zWfsw=="
+      KONTENA_URI="https://10.211.55.5"
+      KONTENA_TOKEN="J7l9RRjzYKN0M+8ZJYdKhsElSP+zCsWZshLHOUMtEzKrIb73IBk4ekNLTCanuPVBw1bxgL7jBdqYWI2pcqcCsw=="
       KONTENA_PEER_INTERFACE=ens160
       KONTENA_VERSION=latest
   - path: /etc/systemd/system/docker.service.d/50-kontena.conf
@@ -19,6 +19,7 @@ write_files:
       fs.inotify.max_user_instances = 8192
 hostname: node
 ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxOLoBA/xCIS3DE7Wv3Nx2fspKFOZLbM3TjGBItlxM3nifh6gTGQaXZeNBEdJFy2kQnAbR8kP3SJ8pt52iA7/OSZMdl9Cx5wf/FWf1IHBYXX96ZL1nAKXTe+CzODPJuKgFCSdLYJewdmvQp053VhK1blrjoe0Wi/SDijJIV3FzLkNoqCRF/178COP5uHbjG8lKLtdhQz532ttNrMxEGzP/krgs7EXMPAH0FUoAziK99tryEu2m15Wh86ejwU+b8kYsucIiZkYq+A+P8iGPjX3JDyD9lCAHy40T1pWBQZ3aUZsHQG2SF3ywOvZWI/zVtuuKz3szO4nXOWGsZR9inOZd
   - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKQiUJNZQXmOzrrIjJUQEXepVay5Ht97UThN+1Xhla+JGLvlR9474T2sWViAkQ1lnUI0tCYzo+6fKPBjIs+Pj4LpuzPLwcAcHb0kIBVnJyNZfXZwmgaZGyp+v8PfSTZqfhO+OioRnrh+wh/aIHT4pNlOYCRB2akqwY7iLHgSn2tUG0f+of3zvz6cWcpv0DSdy4t9DL2RY3fGVu0bzLjIoBR3pYkXTmQbOrBL7J+qj2b7CHQw16lc9ymYNbI9DfQegCwhYm0ACPpCQ8Ctea4g369qHwU8LdeFWyUIBUQvCv0jb6wWUlfKIXLgP/udUgmGe+201JgytDoh+CTPxbLTcH
   - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPCeaj6g4gNtEczHhNS13D1KsFxaT5I0pKPJBNcaFd5/dMjYmLSYY/eas0Tqzcrk+USKqGg4Rc8BEFAVAz8bBpHyntEXLdwYRTjtmM0RwOyZJ3M2Aix4JZLhc3jko21tLdkBWkkzqCpX00ReZjhxWSLEnXASBfslkcizITcBkEBj8HXh33CJvP7YRsWVyhE6VrOzYVa1o52ogRFZb0Q7yD/3ba5u5Jx8P3mgGKFt6cZGYB7WPowe5HJw5vXad80awmkh5QN1JMGw3U2RcA7zk8buMOQ5egb4rWshe2KvQPSBywwRKhWPwL5u9afuoZwmrfpLxVkFYzKkmWpZjuz3C5
 coreos:

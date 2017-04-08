@@ -1,5 +1,15 @@
 #!/bin/bash
 
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='macosx'
+fi
+
 echo "Generates nodes changing only the hostname"
 
 if [ -z "${1}" ]; then
@@ -14,10 +24,19 @@ for node in `seq 1 ${1}`; do
   ISO_FILE=node$node-configdrive.iso
   echo ${ISO_FILE}
   cp $USER_DATA_LOCATION user_data.bak
-  sed -ri 's/^(\s*)(hostname\s*:\s*node\s*$)/\1hostname: '"node$node"'/' $USER_DATA_LOCATION
+  if [[ $platform == 'macosx' ]]; then
+    gsed -ri 's/^(\s*)(hostname\s*:\s*node\s*$)/\1hostname: '"node$node"'/' $USER_DATA_LOCATION
+  elif [[ "$platform" == 'Linux' ]]; then
+    sed -ri 's/^(\s*)(hostname\s*:\s*node\s*$)/\1hostname: '"node$node"'/' $USER_DATA_LOCATION
+  fi
   if [ -e $ISO_FILE ]; then
     rm $ISO_FILE
   fi
-  mkisofs -R -V config-2 -o $ISO_FILE nodes/config-drive
+  if [[ $platform == 'macosx' ]]; then
+    hdiutil makehybrid -iso -joliet -default-volume-name config-2 -o $ISO_FILE nodes/config-drive
+  elif [[ "$platform" == 'Linux' ]]; then
+    mkisofs -R -V config-2 -o $ISO_FILE nodes/config-drive
+  fi
+  
   cp user_data.bak $USER_DATA_LOCATION
 done

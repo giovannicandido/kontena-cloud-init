@@ -6,7 +6,7 @@ write_files:
     content: |
       KONTENA_URI="https://10.211.55.5"
       KONTENA_TOKEN="J7l9RRjzYKN0M+8ZJYdKhsElSP+zCsWZshLHOUMtEzKrIb73IBk4ekNLTCanuPVBw1bxgL7jBdqYWI2pcqcCsw=="
-      KONTENA_PEER_INTERFACE=ens160
+      KONTENA_PEER_INTERFACE=eth0
       KONTENA_VERSION=latest
   - path: /etc/systemd/system/docker.service.d/50-kontena.conf
     content: |

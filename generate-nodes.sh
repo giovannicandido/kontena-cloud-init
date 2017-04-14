@@ -19,6 +19,11 @@ fi
 
 USER_DATA_LOCATION=nodes/config-drive/openstack/latest/user_data
 
+if [[ $platform == 'unknown' ]]; then
+  echo "Platform `uname` is unknown "
+  exit 1
+fi
+
 for node in `seq 1 ${1}`; do
   echo "Creating iso for node $i"
   ISO_FILE=node$node-configdrive.iso
@@ -26,7 +31,7 @@ for node in `seq 1 ${1}`; do
   cp $USER_DATA_LOCATION user_data.bak
   if [[ $platform == 'macosx' ]]; then
     gsed -ri 's/^(\s*)(hostname\s*:\s*node\s*$)/\1hostname: '"node$node"'/' $USER_DATA_LOCATION
-  elif [[ "$platform" == 'Linux' ]]; then
+  elif [[ "$platform" == 'linux' ]]; then
     sed -ri 's/^(\s*)(hostname\s*:\s*node\s*$)/\1hostname: '"node$node"'/' $USER_DATA_LOCATION
   fi
   if [ -e $ISO_FILE ]; then
@@ -34,7 +39,7 @@ for node in `seq 1 ${1}`; do
   fi
   if [[ $platform == 'macosx' ]]; then
     hdiutil makehybrid -iso -joliet -default-volume-name config-2 -o $ISO_FILE nodes/config-drive
-  elif [[ "$platform" == 'Linux' ]]; then
+  elif [[ "$platform" == 'linux' ]]; then
     mkisofs -R -V config-2 -o $ISO_FILE nodes/config-drive
   fi
   

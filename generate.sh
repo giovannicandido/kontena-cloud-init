@@ -32,9 +32,9 @@ then
   rm $ISO_FILE
 fi
 
-if [[ $platform == 'macosx' ]]; then
+if [[ "$platform" == 'macosx' ]]; then
   hdiutil makehybrid -iso -joliet -default-volume-name config-2 -o $ISO_FILE $1/config-drive
-elif [[ "$platform" == 'Linux' ]]; then
+elif [[ "$platform" == 'linux' ]]; then
   mkisofs -R -V config-2 -o $ISO_FILE $1/config-drive
 fi
 

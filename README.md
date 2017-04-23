@@ -1,5 +1,10 @@
 # Roteiro para criação de um cluster docker
 
+Eu criei uma apresentação no youtube sobre o cluster, que pode ser no link abaixo:
+
+[![Apresentação em vídeo](https://img.youtube.com/vi/7uJzcy7Ls-s/0.jpg)](https://www.youtube.com/watch?v=7uJzcy7Ls-s)
+
+
 ## Prerequisitos
 
 1. Um virtualizador (virtualbox, vmware, kvm, esxi, etc...)

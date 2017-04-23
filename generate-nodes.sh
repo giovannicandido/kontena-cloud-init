@@ -13,7 +13,7 @@ fi
 echo "Generates nodes changing only the hostname"
 
 if [ -z "${1}" ]; then
-  echo "Usage: ${0} how_many"
+  echo "Usage: ${0} how_many hostprefix (defaults to node)"
   exit 1
 fi
 
@@ -24,15 +24,21 @@ if [[ $platform == 'unknown' ]]; then
   exit 1
 fi
 
+ISO_PREFIX="node"
+
+if [ ! -z "${2}" ]; then
+   ISO_PREFIX=${2}
+fi
+
 for node in `seq 1 ${1}`; do
   echo "Creating iso for node $i"
-  ISO_FILE=node$node-configdrive.iso
+  ISO_FILE=$ISO_PREFIX$node-configdrive.iso
   echo ${ISO_FILE}
   cp $USER_DATA_LOCATION user_data.bak
   if [[ $platform == 'macosx' ]]; then
-    gsed -ri 's/^(\s*)(hostname\s*:\s*node\s*$)/\1hostname: '"node$node"'/' $USER_DATA_LOCATION
+    gsed -ri 's/^(\s*)(hostname\s*:\s*node\s*$)/\1hostname: '"$ISO_PREFIX$node"'/' $USER_DATA_LOCATION
   elif [[ "$platform" == 'linux' ]]; then
-    sed -ri 's/^(\s*)(hostname\s*:\s*node\s*$)/\1hostname: '"node$node"'/' $USER_DATA_LOCATION
+    sed -ri 's/^(\s*)(hostname\s*:\s*node\s*$)/\1hostname: '"$ISO_PREFIX$node"'/' $USER_DATA_LOCATION
   fi
   if [ -e $ISO_FILE ]; then
     rm $ISO_FILE
